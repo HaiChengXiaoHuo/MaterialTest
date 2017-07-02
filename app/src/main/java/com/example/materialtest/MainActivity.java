@@ -1,6 +1,7 @@
 package com.example.materialtest;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
+//        美化滑动菜单
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
 
         ActionBar actionBar = getSupportActionBar();
@@ -33,13 +36,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         navView.setCheckedItem(R.id.nav_call);
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        navView.setNavigationItemSelectedListener(new NavigationView
+                .OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 mDrawerLayout.closeDrawers();
                 return true;
             }
         });
+
+//        添加悬浮按钮
+        FloatingActionButton fab=(FloatingActionButton)findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,"你点了悬浮按钮",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
