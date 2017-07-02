@@ -3,6 +3,7 @@ package com.example.materialtest;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -50,7 +51,14 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this,"你点了悬浮按钮",Toast.LENGTH_SHORT).show();
+//                snackbar悬浮球添加点击事件
+                Snackbar.make(view,"数据删除",Snackbar.LENGTH_SHORT)
+                        .setAction("取消",new View.OnClickListener(){
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,"数据恢复",Toast.LENGTH_SHORT).show();
+                            }
+                        }).show();
             }
         });
 
